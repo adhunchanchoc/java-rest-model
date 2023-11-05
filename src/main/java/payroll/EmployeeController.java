@@ -19,10 +19,6 @@ class EmployeeController {
         this.repository = repository;
         this.assembler = assembler;
     }
-//    @GetMapping("/employees")
-//    List<Employee> all(){
-//        return repository.findAll();
-//    }
     @GetMapping("/employees")
     CollectionModel<EntityModel<Employee>> all() {
 
@@ -32,10 +28,6 @@ class EmployeeController {
 
         return CollectionModel.of(employees, linkTo(methodOn(EmployeeController.class).all()).withSelfRel());
     }
-//    @GetMapping("/employees/{id}")
-//    Employee getOne(@PathVariable Long id){
-//        return repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
-//    }
     @GetMapping("/employees/{id}") //creates really RESTful representation of an object with links
     EntityModel<Employee> getOne(@PathVariable Long id){
         Employee employee = repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
