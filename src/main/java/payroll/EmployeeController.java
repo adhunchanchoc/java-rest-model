@@ -4,11 +4,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController // the data returned by each method will be written straight into the response body instead of rendering a template
 class EmployeeController {
 
     private final EmployeeRepository repository;
-    //INJECTION by constructor
+    //INJECTION by constructor (could be done via @Autowired annotation as well)
     EmployeeController(EmployeeRepository repository){
         this.repository = repository;
     }
